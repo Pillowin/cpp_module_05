@@ -6,7 +6,7 @@
 /*   By: agautier <agautier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 11:44:15 by agautier          #+#    #+#             */
-/*   Updated: 2021/11/25 13:03:19 by agautier         ###   ########.fr       */
+/*   Updated: 2021/11/30 00:50:22 by agautier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int main(void) {
 	try {
 		Bureaucrat bureaucrat_min("bureaucrat_min", MIN_GRADE);
 		std::cout << bureaucrat_min;
-		bureaucrat_min.incGrade();
+		bureaucrat_min.incrementGrade();
 		std::cout << bureaucrat_min;
 
 		Bureaucrat bureaucrat_err("bureaucrat_err",
@@ -28,7 +28,7 @@ int main(void) {
 		Bureaucrat bureaucrat_max("bureaucrat_max", MAX_GRADE);
 		std::cout << bureaucrat_max;
 
-		bureaucrat_max.decGrade();
+		bureaucrat_max.decrementGrade();
 	} catch (const Bureaucrat::gradeTooLowException& e) {
 		std::cerr << "Error: the grade is too low." << std::endl;
 	} catch (const Bureaucrat::gradeTooHighException& e) {
@@ -46,9 +46,11 @@ int main(void) {
 		Bureaucrat bureaucrat_max("bureaucrat_max", MAX_GRADE);
 		std::cout << bureaucrat_max;
 
-		bureaucrat_max.decGrade(); // Will throw an exception
+		bureaucrat_max.decrementGrade(); // Will throw an exception
 		// Will not be executed
-		bureaucrat_min.decGrade();
-	} catch (const std::exception& e) { std::cerr << e.what() << std::endl; }
+		bureaucrat_min.decrementGrade();
+	} catch (const std::exception& e) {
+		std::cerr << "Error: " << e.what() << "." << std::endl;
+	}
 	return 0;
 }

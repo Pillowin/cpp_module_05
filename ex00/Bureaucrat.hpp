@@ -6,7 +6,7 @@
 /*   By: agautier <agautier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 18:54:24 by agautier          #+#    #+#             */
-/*   Updated: 2021/11/25 12:22:49 by agautier         ###   ########.fr       */
+/*   Updated: 2021/11/30 00:45:45 by agautier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,32 +21,32 @@
 
 class Bureaucrat {
 	public:
-		Bureaucrat(const std::string& name = "default", int grade = MIN_GRADE);
+		Bureaucrat(std::string const& name = "default", int grade = MIN_GRADE);
 		Bureaucrat(Bureaucrat& src);
-		~Bureaucrat();
+		~Bureaucrat(void);
 
-		const std::string& getName() const;
-		int getGrade() const;
+		std::string const& getName(void) const;
+		int getGrade(void) const;
 
-		void incGrade();
-		void decGrade();
+		void incrementGrade(void);
+		void decrementGrade(void);
 
 		class gradeTooHighException: public std::exception {
 			public:
-				const char* what() const throw();
+				char const* what(void) const throw();
 		};
 		class gradeTooLowException: public std::exception {
 			public:
-				const char* what() const throw();
+				char const* what(void) const throw();
 		};
 
 	private:
-		const std::string _name;
+		std::string const _name;
 		int _grade;
 
-		Bureaucrat& operator=(const Bureaucrat& rhs);
+		Bureaucrat& operator=(Bureaucrat const& rhs);
 };
 
-std::ostream& operator<<(std::ostream& o, const Bureaucrat& rhs);
+std::ostream& operator<<(std::ostream& o, Bureaucrat const& rhs);
 
 #endif
