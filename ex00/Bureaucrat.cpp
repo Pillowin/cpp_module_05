@@ -6,7 +6,7 @@
 /*   By: agautier <agautier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 18:54:25 by agautier          #+#    #+#             */
-/*   Updated: 2021/11/25 13:00:58 by agautier         ###   ########.fr       */
+/*   Updated: 2021/11/30 00:07:43 by agautier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,21 +24,6 @@ Bureaucrat::Bureaucrat(Bureaucrat& src) :
 	_name(src._name), _grade(src._grade) {}
 
 Bureaucrat::~Bureaucrat() {}
-
-/*******************************************************/
-
-Bureaucrat& Bureaucrat::operator=(const Bureaucrat& rhs) {
-	(void)rhs;
-	return (*this);
-}
-
-std::ostream& operator<<(std::ostream& o, const Bureaucrat& rhs) {
-	o << rhs.getName() << ", Bureaucrat grade " << rhs.getGrade() << "."
-	  << std::endl;
-	return o;
-}
-
-/*******************************************************/
 
 const std::string& Bureaucrat::getName() const { return (this->_name); }
 
@@ -58,7 +43,16 @@ void Bureaucrat::decGrade() {
 		throw Bureaucrat::gradeTooLowException();
 }
 
-/*******************************************************/
+Bureaucrat& Bureaucrat::operator=(const Bureaucrat& rhs) {
+	(void)rhs;
+	return (*this);
+}
+
+std::ostream& operator<<(std::ostream& o, const Bureaucrat& rhs) {
+	o << rhs.getName() << ", Bureaucrat grade " << rhs.getGrade() << "."
+	  << std::endl;
+	return o;
+}
 
 const char* Bureaucrat::gradeTooHighException::what() const throw() {
 	return ("Exception : grade is too high");
