@@ -6,7 +6,7 @@
 /*   By: agautier <agautier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 13:10:13 by agautier          #+#    #+#             */
-/*   Updated: 2021/11/30 00:34:40 by agautier         ###   ########.fr       */
+/*   Updated: 2021/11/30 00:52:32 by agautier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,11 @@ class Form {
 
 		class gradeTooHighException: public std::exception {
 			public:
-				char const* what() const throw();
+				char const* what(void) const throw();
 		};
 		class gradeTooLowException: public std::exception {
 			public:
-				char const* what() const throw();
+				char const* what(void) const throw();
 		};
 
 	private:

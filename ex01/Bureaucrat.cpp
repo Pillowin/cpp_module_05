@@ -6,7 +6,7 @@
 /*   By: agautier <agautier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 18:54:25 by agautier          #+#    #+#             */
-/*   Updated: 2021/11/30 00:38:12 by agautier         ###   ########.fr       */
+/*   Updated: 2021/11/30 00:53:43 by agautier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,22 +33,22 @@ Bureaucrat::Bureaucrat(Bureaucrat& src) :
 /*
 **	Destructor.
 */
-Bureaucrat::~Bureaucrat() {}
+Bureaucrat::~Bureaucrat(void) {}
 
 /*
 **	Getter for _name.
 */
-std::string const& Bureaucrat::getName() const { return (this->_name); }
+std::string const& Bureaucrat::getName(void) const { return (this->_name); }
 
 /*
 **	Getter for _grade.
 */
-int Bureaucrat::getGrade() const { return (this->_grade); }
+int Bureaucrat::getGrade(void) const { return (this->_grade); }
 
 /*
 **	Increment grade.
 */
-void Bureaucrat::incrementGrade() {
+void Bureaucrat::incrementGrade(void) {
 	if (_grade > MAX_GRADE + 1)
 		_grade--;
 	else
@@ -58,13 +58,16 @@ void Bureaucrat::incrementGrade() {
 /*
 **	Decrement grade.
 */
-void Bureaucrat::decrementGrade() {
+void Bureaucrat::decrementGrade(void) {
 	if (_grade < MIN_GRADE - 1)
 		_grade++;
 	else
 		throw Bureaucrat::gradeTooLowException();
 }
 
+/*
+**	Sign form.
+*/
 void Bureaucrat::signForm(Form& form) const {
 	try {
 		form.beSigned(*this);
@@ -75,21 +78,33 @@ void Bureaucrat::signForm(Form& form) const {
 	}
 }
 
+/*
+**	Private assignation operator.
+*/
 Bureaucrat& Bureaucrat::operator=(Bureaucrat const& rhs) {
 	(void)rhs;
 	return (*this);
 }
 
+/*
+**	Output operator.
+*/
 std::ostream& operator<<(std::ostream& o, Bureaucrat const& rhs) {
 	o << rhs.getName() << ", Bureaucrat grade " << rhs.getGrade() << "."
 	  << std::endl;
 	return o;
 }
 
-char const* Bureaucrat::gradeTooHighException::what() const throw() {
-	return ("Exception : grade is too high");
+/*
+**	Exception grade too high.
+*/
+char const* Bureaucrat::gradeTooHighException::what(void) const throw() {
+	return ("grade is too high");
 }
 
-char const* Bureaucrat::gradeTooLowException::what() const throw() {
-	return ("Exception : grade is too low");
+/*
+**	Exception grade too low.
+*/
+char const* Bureaucrat::gradeTooLowException::what(void) const throw() {
+	return ("grade is too low");
 }

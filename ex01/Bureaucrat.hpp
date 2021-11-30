@@ -6,7 +6,7 @@
 /*   By: agautier <agautier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 18:54:24 by agautier          #+#    #+#             */
-/*   Updated: 2021/11/30 00:21:30 by agautier         ###   ########.fr       */
+/*   Updated: 2021/11/30 00:52:32 by agautier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,22 +25,22 @@ class Bureaucrat {
 	public:
 		Bureaucrat(std::string const& name = "default", int grade = MIN_GRADE);
 		Bureaucrat(Bureaucrat& src);
-		~Bureaucrat();
+		~Bureaucrat(void);
 
-		std::string const& getName() const;
-		int getGrade() const;
+		std::string const& getName(void) const;
+		int getGrade(void) const;
 
-		void incrementGrade();
-		void decrementGrade();
+		void incrementGrade(void);
+		void decrementGrade(void);
 		void signForm(Form& form) const;
 
 		class gradeTooHighException: public std::exception {
 			public:
-				char const* what() const throw();
+				char const* what(void) const throw();
 		};
 		class gradeTooLowException: public std::exception {
 			public:
-				char const* what() const throw();
+				char const* what(void) const throw();
 		};
 
 	private:
