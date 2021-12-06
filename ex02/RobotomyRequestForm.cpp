@@ -6,18 +6,20 @@
 /*   By: agautier <agautier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 20:26:21 by agautier          #+#    #+#             */
-/*   Updated: 2021/11/30 01:31:39 by agautier         ###   ########.fr       */
+/*   Updated: 2021/12/06 13:19:57 by agautier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "RobotomyRequestForm.hpp"
+#include <cstdlib>
+#include <ctime>
 
 /*
 **	Default constructor.
 */
 RobotomyRequestForm::RobotomyRequestForm(std::string const& target) :
 	AForm("RobotomyRequest", false, 72, 45, target) {
-	std::srand(std::time(nullptr));
+	std::srand(std::time(NULL));
 }
 
 /*

@@ -6,7 +6,7 @@
 /*   By: agautier <agautier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/26 13:58:53 by agautier          #+#    #+#             */
-/*   Updated: 2021/11/30 02:18:12 by agautier         ###   ########.fr       */
+/*   Updated: 2021/12/06 13:33:44 by agautier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 /*
 **	Default constructor.
 */
-Intern::Intern(void) : _form(nullptr) {}
+Intern::Intern(void) : _form(NULL) {}
 
 /*
 **	Copy constructor.
@@ -94,7 +94,7 @@ AForm* Intern::makeForm(std::string const& form_name,
 		}
 	}
 	std::cerr << form_name << ": unknow form" << std::endl;
-	return (nullptr);
+	return (NULL);
 }
 
 /*

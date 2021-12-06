@@ -6,11 +6,12 @@
 /*   By: agautier <agautier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 11:44:15 by agautier          #+#    #+#             */
-/*   Updated: 2021/11/30 00:50:22 by agautier         ###   ########.fr       */
+/*   Updated: 2021/12/06 13:18:08 by agautier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
+#include <climits>
 #include <iostream>
 
 int main(void) {
@@ -29,9 +30,9 @@ int main(void) {
 		std::cout << bureaucrat_max;
 
 		bureaucrat_max.decrementGrade();
-	} catch (const Bureaucrat::gradeTooLowException& e) {
+	} catch (Bureaucrat::gradeTooLowException const& e) {
 		std::cerr << "Error: the grade is too low." << std::endl;
-	} catch (const Bureaucrat::gradeTooHighException& e) {
+	} catch (Bureaucrat::gradeTooHighException const& e) {
 		std::cerr << "Error: the grade is too high." << std::endl;
 	}
 
@@ -49,7 +50,7 @@ int main(void) {
 		bureaucrat_max.decrementGrade(); // Will throw an exception
 		// Will not be executed
 		bureaucrat_min.decrementGrade();
-	} catch (const std::exception& e) {
+	} catch (std::exception const& e) {
 		std::cerr << "Error: " << e.what() << "." << std::endl;
 	}
 	return 0;

@@ -6,7 +6,7 @@
 /*   By: agautier <agautier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 13:11:15 by agautier          #+#    #+#             */
-/*   Updated: 2021/11/30 01:30:34 by agautier         ###   ########.fr       */
+/*   Updated: 2021/12/06 13:28:53 by agautier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,10 @@ AForm::AForm(std::string name,
 			 int const grade_to_exec,
 			 std::string const& target) :
 	_name(name),
-	_is_signed(is_signed), _grade_to_sign(grade_to_sign),
-	_grade_to_exec(grade_to_exec), _target(target) {
+	_is_signed(is_signed),
+	_grade_to_sign(grade_to_sign),
+	_grade_to_exec(grade_to_exec),
+	_target(target) {
 	if (_grade_to_exec > MIN_GRADE || _grade_to_sign > MIN_GRADE)
 		throw AForm::gradeTooLowException();
 	else if (_grade_to_exec < MAX_GRADE || _grade_to_sign < MAX_GRADE)
@@ -34,8 +36,10 @@ AForm::AForm(std::string name,
 **	Copy constructor.
 */
 AForm::AForm(AForm const& src) :
-	_name(src._name), _is_signed(src._is_signed),
-	_grade_to_sign(src._grade_to_sign), _grade_to_exec(src._grade_to_exec),
+	_name(src._name),
+	_is_signed(src._is_signed),
+	_grade_to_sign(src._grade_to_sign),
+	_grade_to_exec(src._grade_to_exec),
 	_target(src._target) {}
 
 /*

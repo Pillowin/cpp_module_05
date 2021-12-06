@@ -6,7 +6,7 @@
 /*   By: agautier <agautier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 20:02:35 by agautier          #+#    #+#             */
-/*   Updated: 2021/11/30 01:31:19 by agautier         ###   ########.fr       */
+/*   Updated: 2021/12/06 13:35:25 by agautier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,8 @@ void ShrubberyCreationForm::execute(Bureaucrat const& executor) const {
 	std::ofstream outfile;
 
 	outfile.exceptions(std::ofstream::failbit | std::ofstream::badbit);
-	outfile.open(getTarget() + "_shrubbery");
+	outfile.open(
+		std::string().append(getTarget()).append("_shrubbery").c_str());
 	outfile << "           &&& &&  & &&" << std::endl
 			<< "      && &\\/&\\|& ()|/ @, &&" << std::endl
 			<< "      &\\/(/&/&||/& /_/)_&/_&" << std::endl
